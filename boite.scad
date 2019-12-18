@@ -7,11 +7,11 @@ module u(l=25,ep=1.5,jour=5,h=5){
     } 
 }
 //u();
-module angle(ep=1.5,jour=5,h=5,r=25,epFond=2,epFilmFin=0.8){
+module angle(ep=1.5,jour=5,h=5,r=25,epFond=2){
     translate([0,-2*ep-jour,0])
     intersection(){
 		translate([0,2*ep+jour,0]) difference() {	cylinder(r=r,h=h*4,center=true,$fn=128);
-			translate([ep,epFilmFin-r-jour-2*ep,epFond])cube([jour,r,h]);
+			translate([ep,ep+0.1-r-jour-2*ep,epFond])cube([jour,r,h]);
 		}
         difference(){
             union(){
@@ -27,9 +27,9 @@ module angle(ep=1.5,jour=5,h=5,r=25,epFond=2,epFilmFin=0.8){
     }
  
 }
-angle(epFond=2,r=35,h=25);
+!angle(epFond=2,r=35,h=25);
 
-module angleHaut(ep=1.5,jour=5,h=5,r=25,epToit=2,epFilmFin=0.8){
+module angleHaut(ep=1.5,jour=5,h=5,r=25,epToit=2){
     translate([-ep-jour,-ep,0])
 	difference() {
 		union(){
@@ -42,12 +42,12 @@ module angleHaut(ep=1.5,jour=5,h=5,r=25,epToit=2,epFilmFin=0.8){
 					cube([2*ep+jour,r-3*ep-jour,epToit]);
 			}
 		
-			translate([ep,-r+epFilmFin,epToit*-1])
+			translate([ep,-r+ep+1,epToit*-1])
 			cube([jour,r,h]);
 		}
         
 }
-!angleHaut(h=15,epToit=2);
+angleHaut(h=15,epToit=2);
     
 
 module pane(xL,yL){
