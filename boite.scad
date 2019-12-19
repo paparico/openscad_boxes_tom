@@ -6,6 +6,18 @@ module u(l=25,ep=1.5,jour=5,h=5){
             cube([l-ep+1,jour,h+1.5],false);
     } 
 }
+
+
+module uu(l=25,ep=1.5,jour=5,h=5){
+    difference(){
+        cube([l,jour+2*ep,h],false);
+        translate([ep,ep,-1])
+            cube([l-ep+1,jour,h+1.5],false);
+    } 
+}
+
+
+
 //u();
 module angle(ep=1.5,jour=5,h=5,r=25,epFond=2){
     translate([0,-2*ep-jour,0])
