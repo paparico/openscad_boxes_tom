@@ -39,7 +39,7 @@ module angle(ep=1.5,jour=5,h=5,r=25,epFond=2){
     }
  
 }
-!angle(epFond=2,r=35,h=25);
+angle(epFond=2,r=35,h=25);
 
 module angleHaut(ep=1.5,jour=5,h=5,r=25,epToit=2){
     translate([-ep-jour,-ep,0])
@@ -72,13 +72,13 @@ l_pane=	xInt+jour+epParoi+slack;
 
     
 module etai(epPied=3,xInt=65,jour=0.95*5,epParoi=1.5,h=30,l=20){
-	l_etai= xInt+jour*2+epParoi*4;	
+	l_etai= xInt+jour*2+epParoi*4;
     translate([0,0,0])rotate([0,-90,-90])u(l,epParoi,jour,h);
     translate([xInt+jour+epParoi*2,0,0])rotate([0,-90,-90])u(l,epParoi,jour,h);
     translate([0,0,0])cube([l_etai,h,epPied],false);
     }
 
-    
+
 module machoire(longC=40,longU=15,epU=1.5,jour=5,rC=5,rT=3,male=true){ 
     translate([])rotate([])union(){
         u(l=longU,ep=epU,jour=jour,h=longC);
@@ -140,4 +140,5 @@ module boite(epPane=5,xInt=65,yInt=500,zInt=90,epParoi=1.5,hAngle=30,rAngle=20,e
     }
 boite();
 angle(h=20,r=25,epfond=2.5,jour=0.95*5);	
-!etai(epPied=2.5,xInt=65,jour=0.95*5,epParoi=1.5,h=20,l=20);
+etai(epPied=2.5,xInt=65,jour=0.95*5,epParoi=1.5,h=20,l=20);
+!etai(epPied=2.5,xInt=65,jour=0.98*5,epParoi=1.5,h=20,l=20);
