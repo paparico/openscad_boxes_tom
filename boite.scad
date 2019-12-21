@@ -39,7 +39,7 @@ module angle(ep=1.5,jour=5,h=5,r=25,epFond=2){
     }
  
 }
-angle(epFond=2,r=35,h=25);
+
 
 module angleHaut(ep=1.5,jour=5,h=5,r=25,epToit=2){
     translate([-ep-jour,-ep,0])
@@ -59,7 +59,7 @@ module angleHaut(ep=1.5,jour=5,h=5,r=25,epToit=2){
 		}
         
 }
-angleHaut(h=15,epToit=2);
+
     
 
 module pane(xL,yL){
@@ -138,7 +138,9 @@ module boite(epPane=5,xInt=65,yInt=500,zInt=90,epParoi=1.5,hAngle=30,rAngle=20,e
     
     
     }
-boite();
-angle(h=20,r=25,epfond=2.5,jour=0.95*5);	
-etai(epPied=2.5,xInt=65,jour=0.95*5,epParoi=1.5,h=20,l=20);
-!etai(epPied=2.5,xInt=65,jour=0.98*5,epParoi=1.5,h=20,l=20);
+//boite();
+translate ([ 0,50,0])angle(h=20,r=25,epfond=2.5,jour=0.98*5);	
+//etai(epPied=2.5,xInt=65,jour=0.95*5,epParoi=1.5,h=20,l=20);
+etai(epPied=2.5,xInt=65,jour=0.98*5,epParoi=1.5,h=20,l=20);
+	
+translate ([ 0,-50,0])	angleHaut(h=15,epToit=2);
