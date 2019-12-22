@@ -78,6 +78,15 @@ module etai(epPied=3,xInt=65,jour=0.95*5,epParoi=1.5,h=30,l=20){
     translate([0,0,0])cube([l_etai,h,epPied],false);
     }
 
+//un etai avec la machoire interieure cachee dans le sol
+module etai2(epPied=3,xInt=65,jour=0.95*5,epParoi=1.5,h=30,l=20,epSol=5){
+	difference() {
+		etai(epPied,xInt,jour,epParoi,h,l);
+		translate([epParoi+jour-1,-1,epSol+epPied]) cube([xInt+2*epParoi+2,h+2,l]);
+		}
+	}
+
+
 
 module machoire(longC=40,longU=15,epU=1.5,jour=5,rC=5,rT=3,male=true){ 
     translate([])rotate([])union(){
@@ -139,8 +148,23 @@ module boite(epPane=5,xInt=65,yInt=500,zInt=90,epParoi=1.5,hAngle=30,rAngle=20,e
     
     }
 //boite();
+	
+// trouage pour eviter abs warp
+
+module mitraille(d=8,start=13,step=11,end=69,) {
+	difference() {
+		children();
+		for(i=[start:step:end])
+			{
+			translate([i,0,0]) cylinder(d=d,h=200,center=true);
+			translate([i,20,0]) cylinder(d=d,h=200,center=true);
+			}
+		}
+	}
+	
 translate ([ 0,50,0])angle(h=20,r=25,epfond=2.5,jour=0.98*5);	
 //etai(epPied=2.5,xInt=65,jour=0.95*5,epParoi=1.5,h=20,l=20);
-etai(epPied=2.5,xInt=65,jour=0.98*5,epParoi=1.5,h=20,l=20);
-	
+//!mitraille(){
+	etai2(epPied=2.5,xInt=65,jour=0.98*5,epParoi=1.5,h=20,l=20,epSol=5);
+//}
 translate ([ 0,-50,0])	angleHaut(h=15,epToit=2);
