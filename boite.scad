@@ -151,7 +151,7 @@ module boite(epPane=5,xInt=65,yInt=500,zInt=90,epParoi=1.5,hAngle=30,rAngle=20,e
 	
 // trouage pour eviter abs warp
 
-module mitraille(d=8,start=13,step=11,end=69,) {
+module mitraille(d=8,start=13,step=11,end=69) {
 	difference() {
 		children();
 		for(i=[start:step:end])
@@ -162,9 +162,21 @@ module mitraille(d=8,start=13,step=11,end=69,) {
 		}
 	}
 	
+
+module mitrailleCentre(d=8,start=13,step=11,end=69) {
+	difference() {
+		children();
+		for(i=[start:step:end])
+			{
+			translate([i,10,0]) cylinder(d=d,h=200,center=true);
+			}
+		}
+	}
+
+
 translate ([ 0,50,0])angle(h=20,r=25,epfond=2.5,jour=0.98*5);	
 //etai(epPied=2.5,xInt=65,jour=0.95*5,epParoi=1.5,h=20,l=20);
-//!mitraille(){
+!mitrailleCentre(d=11,start=14.3,step=13,end=69){
 	etai2(epPied=2.5,xInt=65,jour=0.98*5,epParoi=1.5,h=20,l=20,epSol=5);
-//}
+}
 translate ([ 0,-50,0])	angleHaut(h=15,epToit=2);
